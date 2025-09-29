@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrias Mediáticas: Una Revolución Cultural</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #4ecdc4;
+            margin-bottom: 10px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .tab-button {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .tab-button:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .tab-button.active {
+            background: rgba(255,255,255,0.3);
+            border-color: #4ecdc4;
+            box-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #ff6b6b, #4ecdc4, #45b7d1);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 50px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: scale(1.02);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 55%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 55%;
+        }
+
+        .timeline-content {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px rgba(255,255,255,0.5);
+            z-index: 10;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .concept-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .concept-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .concept-card:hover::before {
+            left: 100%;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .concept-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .comparison-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .comparison-card.classical {
+            border-left: 5px solid #ff6b6b;
+        }
+
+        .comparison-card.modern {
+            border-left: 5px solid #4ecdc4;
+        }
+
+        .culture-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .culture-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .culture-item:hover {
+            transform: scale(1.05);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .river-container {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .river-flow {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .river-stage {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+
+        .river-stage:hover {
+            transform: scale(1.1);
+            background: rgba(255,255,255,0.3);
+        }
+
+        .products-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .quiz-container {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            margin: 30px 0;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .quiz-question {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-option {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .quiz-option:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .quiz-option.correct {
+            background: rgba(76, 175, 80, 0.4);
+            border-color: #4caf50;
+            animation: correctAnswer 0.5s ease;
+        }
+
+        .quiz-option.incorrect {
+            background: rgba(244, 67, 54, 0.4);
+            border-color: #f44336;
+            animation: shake 0.5s ease;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            margin: 2% auto;
+            padding: 25px;
+            border-radius: 20px;
+            width: 85%;
+            max-width: 550px;
+            max-height: 85vh;
+            overflow-y: auto;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        .modal-header {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #4ecdc4;
+        }
+
+        .modal-body {
+            line-height: 1.5;
+            font-size: 1rem;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: #fff;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .close:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes correctAnswer {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes perfectScore {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .timeline::before { left: 20px; }
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 50px;
+                margin-right: 0;
+                text-align: left;
+            }
+            .timeline-dot { left: 20px; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .quiz-options { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🚀 Industrias Mediáticas</h1>
+            <p style="font-size: 1.3rem; margin-bottom: 30px;">De la Cultura Clásica a la Revolución Digital</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">700K</div>
+                    <div>Trabajadores<br>(3.6% del empleo)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3.3%</div>
+                    <div>del PIB<br>Nacional</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">150+</div>
+                    <div>Años de<br>Evolución</div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="nav-tabs">
+            <button class="tab-button active" onclick="showTab('evolution')">🕰️ Evolución</button>
+            <button class="tab-button" onclick="showTab('historia')">📚 Historia</button>
+            <button class="tab-button" onclick="showTab('concepts')">💡 Conceptos</button>
+            <button class="tab-button" onclick="showTab('culture')">🎨 Cultura</button>
+            <button class="tab-button" onclick="showTab('industry')">🏭 Industria</button>
+            <button class="tab-button" onclick="showTab('eticos')">⚖️ Ética y Legal</button>
+            <button class="tab-button" onclick="showTab('quiz')">🎯 Quiz</button>
+        </nav>
+
+        <!-- EVOLUCIÓN -->
+        <div id="evolution" class="tab-content active">
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem;">📈 La Revolución Mediática</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item" onclick="showDetail('rotativa')">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 style="color: #ff6b6b; margin-bottom: 15px;">1846-1865: La Rotativa 📰</h3>
+                        <p><strong>Applegath y Bullock</strong> revolucionan la prensa con la máquina rotativa.</p>
+                        <p style="margin-top: 10px; opacity: 0.9;">🔥 <em>¡Nace la información masiva!</em></p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" onclick="showDetail('fonografo')">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 style="color: #4ecdc4; margin-bottom: 15px;">1876: El Fonógrafo 🎵</h3>
+                        <p><strong>Edison</strong> patenta el fonógrafo.</p>
+                        <p style="margin-top: 10px; opacity: 0.9;">🎶 <em>La música ya no es solo para el presente!</em></p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" onclick="showDetail('radio')">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 style="color: #45b7d1; margin-bottom: 15px;">1879: Primera Radio 📻</h3>
+                        <p><strong>Marconi</strong> realiza la primera transmisión.</p>
+                        <p style="margin-top: 10px; opacity: 0.9;">⚡ <em>Las ondas viajan más rápido que los caballos!</em></p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" onclick="showDetail('cine')">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 style="color: #96ceb4; margin-bottom: 15px;">1895: Cinematógrafo 🎬</h3>
+                        <p><strong>Hermanos Lumière</strong> patentan el cinematógrafo. Edison crea el Kinetoscopio.</p>
+                        <p style="margin-top: 10px; opacity: 0.9;">🎭 <em>¡Las imágenes cobran vida!</em></p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" onclick="showDetail('tv')">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 style="color: #ffeaa7; margin-bottom: 15px;">1927: Televisión 📺</h3>
+                        <p><strong>Baird</strong> transmite las primeras señales de TV.</p>
+                        <p style="margin-top: 10px; opacity: 0.9;">🌍 <em>El mundo entra en tu sala!</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HISTORIA TEÓRICA -->
+        <div id="historia" class="tab-content">
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem;">📚 Evolución del Pensamiento Teórico</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card" style="border-left: 5px solid #e17055;">
+                    <h3 style="color: #e17055; margin-bottom: 20px;">🇩🇪 ALEMANIA - AÑOS 40</h3>
+                    <h4 style="color: #ff6b6b; margin-bottom: 15px;">INDUSTRIA CULTURAL (singular)</h4>
+                    
+                    <p><strong>👥 Autores:</strong> Horkheimer y Adorno (Escuela de Frankfurt)</p>
+                    <p><strong>🎯 Enfoque:</strong> Crítica radical a la "cultura de masas"</p>
+                    <p><strong>⚔️ Contexto:</strong> Críticos con capitalismo, fascismo y comunismo</p>
+                    
+                    <p style="margin-top: 15px;"><strong>💭 Teoría crítica de la cultura:</strong></p>
+                    <ul style="list-style: none; line-height: 1.7; margin-top: 10px;">
+                        <li>⚠️ <strong>Mercantilización</strong> de la cultura</li>
+                        <li>😴 Consumidores <strong>políticamente dóciles</strong></li>
+                        <li>🎨 Destruye <strong>autonomía de artistas</strong></li>
+                        <li>⚡ Elimina <strong>capacidad subversiva</strong></li>
+                        <li>📉 Provoca <strong>banalización cultural</strong></li>
+                    </ul>
+                    
+                    <div style="background: rgba(225, 112, 85, 0.1); padding: 15px; border-radius: 10px; margin-top: 20px;">
+                        <p><strong>🔍 Su visión:</strong> La industria cultural es un mecanismo de control social que manipula a las masas.</p>
+                    </div>
+                </div>
+                
+                <div class="comparison-card" style="border-left: 5px solid #4ecdc4;">
+                    <h3 style="color: #4ecdc4; margin-bottom: 20px;">🇫🇷 FRANCIA - AÑOS 70</h3>
+                    <h4 style="color: #45b7d1; margin-bottom: 15px;">INDUSTRIAS CULTURALES (plural)</h4>
+                    
+                    <p><strong>🔄 Cambio de enfoque:</strong> De crítica filosófica a análisis empírico</p>
+                    <p><strong>📊 Metodología:</strong> Estudios económicos y recogida de datos</p>
+                    
+                    <p style="margin-top: 15px;"><strong>🎯 Sectores analizados:</strong></p>
+                    <ul style="list-style: none; line-height: 1.7; margin-top: 10px;">
+                        <li>📖 <strong>Editorial</strong> (libros, revistas)</li>
+                        <li>💿 <strong>Disco</strong> (industria musical)</li>
+                        <li>🎬 <strong>Cine</strong> (audiovisual)</li>
+                        <li>📰 <strong>Prensa</strong> (periódicos)</li>
+                        <li>📻 <strong>Radio</strong> (medios sonoros)</li>
+                        <li>📺 <strong>Televisión</strong> (medios audiovisuales)</li>
+                    </ul>
+                    
+                    <p style="margin-top: 15px;"><strong>🔑 Concepto clave: "Reproductividad"</strong></p>
+                    <p>Posibilidad de reproducir de manera <strong>ilimitada</strong> los mensajes y contenidos simbólicos.</p>
+                    
+                    <div style="background: rgba(78, 205, 196, 0.1); padding: 15px; border-radius: 10px; margin-top: 20px;">
+                        <p><strong>🎯 Objetivo:</strong> Estudiar la evolución de la cultura en el capitalismo con datos concretos y análisis sectorial.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; margin-top: 40px; text-align: center;">
+                <h3 style="color: #ffeaa7; margin-bottom: 20px;">🔄 Del Pesimismo al Pragmatismo</h3>
+                <p style="font-size: 1.1rem; line-height: 1.6;">
+                    <strong>Alemania (40s):</strong> Visión crítica y pesimista - La cultura como herramienta de manipulación<br>
+                    <strong>⬇️</strong><br>
+                    <strong>Francia (70s):</strong> Visión analítica y pragmática - La cultura como sector económico estudiable
+                </p>
+            </div>
+        </div>
+
+        <!-- CONCEPTOS -->
+        <div id="concepts" class="tab-content">
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem;">🧠 Los 5 Pilares del Ecosistema</h2>
+            
+            <div class="cards-grid">
+                <div class="concept-card" onclick="showConcept('sector-artes')">
+                    <span class="concept-icon">🎭</span>
+                    <h3 style="margin-bottom: 15px; color: #ff6b6b;">Sector de las Artes</h3>
+                    <p>Únicos, irrepetibles, necesitan apoyo estatal. Teatro, danza, ópera...</p>
+                </div>
+                
+                <div class="concept-card" onclick="showConcept('industrias-culturales')">
+                    <span class="concept-icon">🏭</span>
+                    <h3 style="margin-bottom: 15px; color: #4ecdc4;">Industrias Culturales</h3>
+                    <p>Creatividad + Economía = Mercado. Producen bienes culturales masivos.</p>
+                </div>
+                
+                <div class="concept-card" onclick="showConcept('industrias-mediaticas')">
+                    <span class="concept-icon">📺</span>
+                    <h3 style="margin-bottom: 15px; color: #45b7d1;">Industrias Mediáticas</h3>
+                    <p>Controlan comunicación, forman opinión pública, gran poder político.</p>
+                </div>
+                
+                <div class="concept-card" onclick="showConcept('industrias-creativas')">
+                    <span class="concept-icon">💡</span>
+                    <h3 style="margin-bottom: 15px; color: #96ceb4;">Industrias Creativas</h3>
+                    <p>La creatividad humana como motor económico. Propiedad intelectual.</p>
+                </div>
+                
+                <div class="concept-card" onclick="showConcept('ocio-entretenimiento')">
+                    <span class="concept-icon">🎮</span>
+                    <h3 style="margin-bottom: 15px; color: #ffeaa7;">Ocio y Entretenimiento</h3>
+                    <p>Actividad económica centrada en el impacto financiero del usuario.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CULTURA -->
+        <div id="culture" class="tab-content">
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem;">🎨 Transformación Cultural</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card classical">
+                    <h3 style="color: #ff6b6b; margin-bottom: 20px;">🏛️ Cultura Clásica</h3>
+                    <ul style="list-style: none; line-height: 1.8;">
+                        <li>✨ <strong>Originales únicos</strong></li>
+                        <li>🔨 <strong>Trabajo artesanal</strong></li>
+                        <li>💎 <strong>Valor en materiales y habilidad</strong></li>
+                        <li>🎭 <strong>Espectáculos en vivo</strong></li>
+                        <li>🖼️ <strong>Artes plásticas exclusivas</strong></li>
+                    </ul>
+                </div>
+                
+                <div class="comparison-card modern">
+                    <h3 style="color: #4ecdc4; margin-bottom: 20px;">🚀 Era del Capitalismo</h3>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: #4ecdc4;">✅ Ventajas:</strong>
+                        <ul style="list-style: none; line-height: 1.6; margin-top: 10px;">
+                            <li>🌍 Masificación y socialización</li>
+                            <li>🔓 Acceso ilimitado</li>
+                            <li>💼 Crecimiento y empleo</li>
+                            <li>🤝 Redistribución social</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong style="color: #ff6b6b;">⚠️ Desventajas:</strong>
+                        <ul style="list-style: none; line-height: 1.6; margin-top: 10px;">
+                            <li>💰 Mercantilización</li>
+                            <li>📊 Búsqueda de beneficio</li>
+                            <li>🏭 Estandarización</li>
+                            <li>🔒 Limitación creativa</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="text-align: center; margin: 40px 0 20px 0; font-size: 2rem;">🌟 Universo Cultural Actual</h3>
+            <div class="culture-examples">
+                <div class="culture-item"><span style="font-size: 2rem;">🎵</span><br>Música</div>
+                <div class="culture-item"><span style="font-size: 2rem;">🎬</span><br>Cine</div>
+                <div class="culture-item"><span style="font-size: 2rem;">📚</span><br>Literatura</div>
+                <div class="culture-item"><span style="font-size: 2rem;">🎮</span><br>Videojuegos</div>
+                <div class="culture-item"><span style="font-size: 2rem;">🎙️</span><br>Podcasts</div>
+                <div class="culture-item"><span style="font-size: 2rem;">📱</span><br>Apps</div>
+                <div class="culture-item"><span style="font-size: 2rem;">🎭</span><br>Teatro</div>
+                <div class="culture-item"><span style="font-size: 2rem;">📺</span><br>Streaming</div>
+            </div>
+        </div>
+
+        <!-- INDUSTRIA -->
+        <div id="industry" class="tab-content">
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem;">🏔️ La Metáfora del Río</h2>
+            
+            <div class="river-container">
+                <h3 style="margin-bottom: 30px; font-size: 1.5rem;">💡 "El poder aumenta al alejarse de la creación"</h3>
+                <p style="margin-bottom: 30px; font-size: 1.1rem;">Del monte (artistas) al valle (consumidores)</p>
+                
+                <div class="river-flow">
+                    <div class="river-stage" style="background: linear-gradient(45deg, #ff6b6b, #ff8e53);">
+                        🏔️ <strong>CREACIÓN</strong><br><small>Artistas, Autores</small>
+                    </div>
+                    <div class="river-stage" style="background: linear-gradient(45deg, #ff8e53, #ff6b35);">
+                        🏭 <strong>PRODUCCIÓN</strong><br><small>Estudios, Editores</small>
+                    </div>
+                    <div class="river-stage" style="background: linear-gradient(45deg, #ff6b35, #f7931e);">
+                        📋 <strong>PROGRAMACIÓN</strong><br><small>Curadores</small>
+                    </div>
+                    <div class="river-stage" style="background: linear-gradient(45deg, #f7931e, #4ecdc4);">
+                        📡 <strong>DIFUSIÓN</strong><br><small>Plataformas</small>
+                    </div>
+                    <div class="river-stage" style="background: linear-gradient(45deg, #4ecdc4, #45b7d1);">
+                        🛒 <strong>COMERCIALIZACIÓN</strong><br><small>Distribuidores</small>
+                    </div>
+                    <div class="river-stage" style="background: linear-gradient(45deg, #45b7d1, #96ceb4);">
+                        👥 <strong>USUARIOS</strong><br><small>Consumidores</small>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; margin-top: 30px;">
+                    <p><strong>💰 Flujo Financiero:</strong> El dinero se concentra en los intermediarios</p>
+                    <p><strong>⚡ Flujo del Poder:</strong> Mayor masificación = Mayor poder de intermediarios</p>
+                </div>
+            </div>
+
+            <div class="products-comparison">
+                <div class="comparison-card">
+                    <h3 style="color: #ff6b6b; margin-bottom: 20px;">📦 Productos Editoriales</h3>
+                    <ul style="list-style: none; line-height: 1.8;">
+                        <li>📚 Libros, películas, discos...</li>
+                        <li>🎯 Productos unitarios</li>
+                        <li>💿 Soportes físicos</li>
+                        <li>💰 Pago directo del usuario</li>
+                        <li>⏳ Larga vida comercial</li>
+                    </ul>
+                </div>
+                <div class="comparison-card">
+                    <h3 style="color: #4ecdc4; margin-bottom: 20px;">🌊 Cultura de Flujo</h3>
+                    <ul style="list-style: none; line-height: 1.8;">
+                        <li>📻 Radio, TV, streaming...</li>
+                        <li>⏰ Flujo temporal (programación)</li>
+                        <li>📺 Financiados por publicidad</li>
+                        <li>⚡ Alta obsolescencia comercial</li>
+                        <li>🔄 Renovación constante</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ASPECTOS ÉTICOS Y LEGALES -->
+        <div id="eticos" class="tab-content">
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem;">⚖️ Aspectos Éticos, Legales y Críticos</h2>
+            
+            <!-- Economía Naranja -->
+            <div style="background: linear-gradient(135deg, #ff9500, #ff6b00); padding: 30px; border-radius: 20px; margin-bottom: 40px; color: white;">
+                <h3 style="font-size: 2rem; margin-bottom: 20px; text-align: center;">🍊 ECONOMÍA NARANJA</h3>
+                <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; text-align: center;">
+                    <strong>Banco Interamericano de Desarrollo (2013):</strong><br>
+                    "Conjunto de actividades que, de manera encadenada, permiten que las ideas se transformen en bienes y servicios culturales cuyo valor está determinado por su contenido de propiedad intelectual."
+                </p>
+                
+                <div class="cards-grid" style="margin-top: 30px;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px;">
+                        <h4 style="color: #ff6b00; margin-bottom: 15px;">🏛️ Industrias Culturales Convencionales</h4>
+                        <ul style="list-style: none; line-height: 1.6;">
+                            <li>📖 Editorial</li>
+                            <li>🎬 Audiovisual</li>
+                            <li>🎵 Musical</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px;">
+                        <h4 style="color: #ff6b00; margin-bottom: 15px;">🎨 Arte y Patrimonio</h4>
+                        <ul style="list-style: none; line-height: 1.6;">
+                            <li>🖼️ Artes Visuales</li>
+                            <li>🎭 Artes Escénicas</li>
+                            <li>🏛️ Turismo Cultural</li>
+                            <li>🎓 Educación Artística</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px;">
+                        <h4 style="color: #ff6b00; margin-bottom: 15px;">💻 Creaciones Funcionales</h4>
+                        <ul style="list-style: none; line-height: 1.6;">
+                            <li>🎨 Diseño</li>
+                            <li>📺 Publicidad</li>
+                            <li>💾 Software de Contenidos</li>
+                            <li>👗 Moda prêt-à-porter</li>
+                            <li>📰 Agencias de noticias</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px;">
+                        <h4 style="color: #ff6b00; margin-bottom: 15px;">🚀 Áreas de Soporte</h4>
+                        <ul style="list-style: none; line-height: 1.6;">
+                            <li>🔬 Investigación e Innovación</li>
+                            <li>🎓 Educación Creativa</li>
+                            <li>📚 Formación Técnica</li>
+                            <li>⚖️ Derechos de Propiedad Intelectual</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Derechos Humanos -->
+            <div class="comparison-grid">
+                <div class="comparison-card" style="border-left: 5px solid #e74c3c;">
+                    <h3 style="color: #e74c3c; margin-bottom: 20px;">🏛️ DECLARACIÓN UNIVERSAL DE DERECHOS HUMANOS</h3>
+                    <div style="background: rgba(231, 76, 60, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                        <h4 style="margin-bottom: 15px;">📜 Artículo 19 (1948 - 76 años)</h4>
+                        <p style="font-style: italic; line-height: 1.6;">
+                            "Todo individuo tiene derecho a la libertad de opinión y de expresión; este derecho incluye el de no ser molestado a causa de sus opiniones, el de <strong>investigar</strong> y <strong>recibir informaciones</strong> y opiniones, y el de <strong>difundirlas</strong>, sin limitación de fronteras, por cualquier medio de expresión."
+                        </p>
+                    </div>
+                    
+                    <h4 style="color: #c0392b; margin-bottom: 15px;">🔄 Triple vertiente del DERECHO A LA INFORMACIÓN:</h4>
+                    <ul style="list-style: none; line-height: 1.8;">
+                        <li>🔍 <strong>Investigar</strong> - Buscar información</li>
+                        <li>📥 <strong>Recibir</strong> - Acceder a información</li>
+                        <li>📤 <strong>Difundir</strong> - Compartir información</li>
+                    </ul>
+                </div>
+                
+                <div class="comparison-card" style="border-left: 5px solid #8e44ad;">
+                    <h3 style="color: #8e44ad; margin-bottom: 20px;">⚖️ DERECHOS DE AUTOR</h3>
+                    <p style="margin-bottom: 20px; line-height: 1.6;">
+                        <strong>Siglo XX:</strong> La propiedad intelectual corresponde al autor por el solo hecho de su creación. Incluye derechos de autores y otros titulares (artistas, productores, organismos de radiodifusión).
+                    </p>
+                    
+                    <div class="products-comparison" style="margin: 20px 0;">
+                        <div style="background: rgba(142, 68, 173, 0.1); padding: 15px; border-radius: 10px;">
+                            <h4 style="color: #8e44ad; margin-bottom: 10px;">💰 DERECHOS ECONÓMICOS</h4>
+                            <ul style="list-style: none; line-height: 1.6;">
+                                <li>⏰ Vigentes por tiempo limitado</li>
+                                <li>💸 Pueden venderse o cederse</li>
+                                <li>🔄 Reproducción, distribución</li>
+                                <li>📢 Comunicación pública</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(142, 68, 173, 0.1); padding: 15px; border-radius: 10px;">
+                            <h4 style="color: #8e44ad; margin-bottom: 10px;">❤️ DERECHOS MORALES</h4>
+                            <ul style="list-style: none; line-height: 1.6;">
+                                <li>♾️ Perpetuos e irrenunciables</li>
+                                <li>🚫 No se pueden ceder</li>
+                                <li>✏️ Reconocimiento de autoría</li>
+                                <li>🛡️ Integridad de la obra</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ejemplos por industria -->
+            <div style="background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; margin: 40px 0;">
+                <h3 style="text-align: center; margin-bottom: 30px; font-size: 1.8rem; color: #f39c12;">📋 Derechos por Industria</h3>
+                
+                <div class="cards-grid">
+                    <div style="background: rgba(52, 152, 219, 0.1); padding: 20px; border-radius: 15px; border-left: 4px solid #3498db;">
+                        <h4 style="color: #3498db; margin-bottom: 15px;">📚 LITERATURA</h4>
+                        <p><strong>🖋️ De autor:</strong> Escritor</p>
+                        <p><strong>📖 De edición:</strong> Editorial</p>
+                    </div>
+                    
+                    <div style="background: rgba(46, 204, 113, 0.1); padding: 20px; border-radius: 15px; border-left: 4px solid #2ecc71;">
+                        <h4 style="color: #2ecc71; margin-bottom: 15px;">🎵 MÚSICA</h4>
+                        <p><strong>🎼 De autor:</strong> Compositor, Letrista</p>
+                        <p><strong>🎤 Fonográficos:</strong> Compañía, Intérpretes</p>
+                    </div>
+                    
+                    <div style="background: rgba(231, 76, 60, 0.1); padding: 20px; border-radius: 15px; border-left: 4px solid #e74c3c;">
+                        <h4 style="color: #e74c3c; margin-bottom: 15px;">🎬 CINE</h4>
+                        <p><strong>🎭 De autor:</strong> Guionista, Director, Compositor</p>
+                        <p><strong>🎪 Conexos:</strong> Intérpretes y ejecutantes</p>
+                        <p><strong>📜 Licencias:</strong> Obras preexistentes</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Creative Commons y Dominio Público -->
+            <div class="comparison-grid">
+                <div style="background: rgba(26, 188, 156, 0.1); padding: 25px; border-radius: 20px; border: 2px solid #1abc9c; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 10px; right: 10px; font-size: 3rem; opacity: 0.1;">📖</div>
+                    <div style="position: absolute; top: 50px; left: 10px; font-size: 2rem; opacity: 0.1;">🎈</div>
+                    <div style="position: absolute; bottom: 10px; right: 50px; font-size: 2.5rem; opacity: 0.1;">🎈</div>
+                    <div style="position: absolute; bottom: 40px; left: 20px; font-size: 1.5rem; opacity: 0.1;">🌟</div>
+                    
+                    <h3 style="color: #1abc9c; margin-bottom: 20px; text-align: center;">📖 DOMINIO PÚBLICO</h3>
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <div style="font-size: 4rem; margin-bottom: 10px;">🎈🎈🎈</div>
+                        <p style="font-size: 1.1rem; line-height: 1.6;">
+                            Cuando vence el plazo de una obra, pasa a ser de <strong>uso público e ilimitado</strong>.
+                        </p>
+                    </div>
+                    
+                    <div style="background: rgba(26, 188, 156, 0.2); padding: 15px; border-radius: 10px; text-align: center; margin-bottom: 15px;">
+                        <p><strong>✅ Se puede utilizar libremente sin permiso del autor</strong></p>
+                    </div>
+                    
+                    <div style="font-size: 0.9rem; text-align: center;">
+                        <p><strong>📚 Ejemplos:</strong> Shakespeare, Beethoven, Cervantes</p>
+                        <p><strong>⏰ En España:</strong> 70 años después de la muerte del autor</p>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(52, 152, 219, 0.1); padding: 25px; border-radius: 20px; border: 2px solid #3498db; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 15px; left: 15px; font-size: 2.5rem; opacity: 0.1;">🔓</div>
+                    <div style="position: absolute; top: 20px; right: 20px; font-size: 2rem; opacity: 0.1;">🎈</div>
+                    <div style="position: absolute; bottom: 15px; left: 30px; font-size: 1.8rem; opacity: 0.1;">🎈</div>
+                    <div style="position: absolute; bottom: 20px; right: 15px; font-size: 2.2rem; opacity: 0.1;">💫</div>
+                    
+                    <h3 style="color: #3498db; margin-bottom: 20px; text-align: center;">🔓 CREATIVE COMMONS</h3>
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <div style="font-size: 4rem; margin-bottom: 10px;">🎈🔓🎈</div>
+                        <p style="margin-bottom: 15px;"><strong>Fundado en 2001</strong></p>
+                        <p style="line-height: 1.6; margin-bottom: 20px;">
+                            Incentivo a la creatividad, el intercambio y la innovación digital.
+                        </p>
+                    </div>
+                    
+                    <div style="background: rgba(52, 152, 219, 0.2); padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9rem; line-height: 1.5;">
+                            <div><strong>🔍 BY:</strong> Atribución</div>
+                            <div><strong>🚫 ND:</strong> No modificar</div>
+                            <div><strong>🔄 SA:</strong> Misma licencia</div>
+                            <div><strong>💼 NC:</strong> No comercial</div>
+                        </div>
+                    </div>
+                    
+                    <div style="font-size: 0.9rem; text-align: center;">
+                        <p><strong>🌍 Ejemplos:</strong> Wikipedia, muchos videos de YouTube</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ -->
+        <div id="quiz" class="tab-content">
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem;">🎯 ¿Cuánto Sabes?</h2>
+            
+            <div class="quiz-container">
+                <div class="quiz-question"><strong>Pregunta 1:</strong> ¿Qué porcentaje del PIB representan las industrias culturales?</div>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">A) 2.1%</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">B) 4.7%</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, true)">C) 3.3%</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">D) 5.2%</button>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question"><strong>Pregunta 2:</strong> ¿Quién patentó el fonógrafo en 1876?</div>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="checkAnswer(this, true)">A) Edison</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">B) Hermanos Lumière</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">C) Marconi</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">D) Baird</button>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question"><strong>Pregunta 3:</strong> ¿Qué caracteriza al Sector de las Artes?</div>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">A) Alta reproducibilidad</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">B) Financiación por publicidad</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">C) Alta obsolescencia</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, true)">D) Naturaleza única y apoyo estatal</button>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question"><strong>Pregunta 4:</strong> ¿En qué año se fundó Creative Commons?</div>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">A) 1998</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, true)">B) 2001</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">C) 2005</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">D) 2010</button>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question"><strong>Pregunta 5:</strong> ¿Años para dominio público en España?</div>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">A) 50 años</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">B) 60 años</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">C) 100 años</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, true)">D) 70 años</button>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question"><strong>Pregunta 6:</strong> ¿Por qué Hollywood en California?</div>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">A) Actores famosos</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">B) Solo buen clima</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, true)">C) Escapar monopolio Edison</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">D) Costos baratos</button>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question"><strong>Pregunta 7:</strong> Diferencia Alemania vs Francia:</div>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="checkAnswer(this, true)">A) Crítica vs empírica</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">B) Alemania optimista</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">C) Francia filosófica</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">D) Sin diferencias</button>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question"><strong>Pregunta 8:</strong> Concepto francés clave:</div>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">A) Mercantilización</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">B) Banalización</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">C) Manipulación</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, true)">D) Reproductividad</button>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question"><strong>Pregunta 9:</strong> Economía Naranja significa:</div>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">A) Agricultura cítricos</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, true)">B) Ideas en bienes culturales</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">C) Energías renovables</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">D) Solo tecnología</button>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question"><strong>Pregunta 10:</strong> Poder en metáfora río:</div>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">A) Creación (monte)</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">B) Consumidores (valle)</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, true)">C) Intermediarios (distribución)</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">D) Producción</button>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question"><strong>Pregunta 11:</strong> Triple vertiente Art. 19:</div>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">A) Crear, producir, vender</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">B) Leer, escribir, publicar</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">C) Opinar, criticar, censurar</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, true)">D) Investigar, recibir, difundir</button>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question"><strong>Pregunta 12:</strong> Derechos morales vs económicos:</div>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">A) Morales duran menos</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, true)">B) Morales perpetuos, económicos temporales</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">C) Morales no heredables</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, false)">D) Morales no protegen</button>
+                </div>
+            </div>
+
+            <div id="finalMessage" style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; margin-top: 40px; text-align: center;">
+                <h3>🎉 ¡Completa el quiz!</h3>
+                <p>Responde todas las preguntas para ver tu resultado.</p>
+                <div style="margin-top: 20px; font-size: 3rem;">🎈🎉🎈</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para mostrar información -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalHeader" class="modal-header"></div>
+            <div id="modalBody" class="modal-body"></div>
+        </div>
+    </div>
+
+    <div id="confetti-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1000;"></div>
+
+    <script>
+        // Variables globales
+        var modal, modalHeader, modalBody;
+        var correctAnswers = 0;
+        var totalQuestions = 12;
+
+        // Función para cambiar pestañas
+        function showTab(tabName) {
+            console.log('Changing tab to:', tabName);
+            var allTabs = document.querySelectorAll('.tab-content');
+            var allButtons = document.querySelectorAll('.tab-button');
+            
+            allTabs.forEach(function(tab) { tab.classList.remove('active'); });
+            allButtons.forEach(function(btn) { btn.classList.remove('active'); });
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Función para mostrar modal
+        function showModal(title, content) {
+            console.log('showModal called with title:', title);
+            
+            if (!modal) {
+                modal = document.getElementById('infoModal');
+                modalHeader = document.getElementById('modalHeader');
+                modalBody = document.getElementById('modalBody');
+            }
+            
+            if (modal && modalHeader && modalBody) {
+                modalHeader.innerHTML = title;
+                modalBody.innerHTML = content;
+                modal.style.display = 'block';
+                console.log('Modal displayed successfully');
+            } else {
+                console.error('Modal elements not found');
+            }
+        }
+
+        // Función para cerrar modal
+        function closeModal() {
+            console.log('Closing modal');
+            if (modal) {
+                modal.style.display = 'none';
+            } else {
+                var modalEl = document.getElementById('infoModal');
+                if (modalEl) modalEl.style.display = 'none';
+            }
+        }
+
+        // Función para timeline
+        function showDetail(invention) {
+            console.log('showDetail called for:', invention);
+            
+            var title = '';
+            var content = '';
+            
+            if (invention === 'rotativa') {
+                title = '🖨️ La Revolución de la Rotativa (1846-1865)';
+                content = '<p><strong>Inventores:</strong> Applegath y Bullock</p>' +
+                         '<p><strong>🚀 Impacto:</strong> Permitió imprimir miles de ejemplares por hora, democratizando la información.</p>' +
+                         '<p><strong>📊 Antes:</strong> Solo cientos de copias al día</p>' +
+                         '<p><strong>📈 Después:</strong> Miles de copias por hora</p>' +
+                         '<p><strong>🌍 Consecuencia:</strong> Nacimiento de la prensa masiva moderna.</p>';
+            } else if (invention === 'fonografo') {
+                title = '🎵 El Fonógrafo de Edison (1876)';
+                content = '<p><strong>Inventor:</strong> Thomas Edison</p>' +
+                         '<p><strong>🎶 Revolución:</strong> Primera vez que se podía grabar y reproducir sonidos.</p>' +
+                         '<p><strong>🏠 Impacto social:</strong> Creó la industria del entretenimiento doméstico.</p>' +
+                         '<p><strong>💿 Evolución:</strong> Origen de toda la industria musical moderna.</p>';
+            } else if (invention === 'radio') {
+                title = '📻 La Radio de Marconi (1879)';
+                content = '<p><strong>Inventor:</strong> Guglielmo Marconi</p>' +
+                         '<p><strong>⚡ Velocidad:</strong> Las noticias viajaban a velocidad de luz.</p>' +
+                         '<p><strong>🌍 Conectividad:</strong> Conectó continentes instantáneamente.</p>' +
+                         '<p><strong>🎭 Impacto:</strong> Surgimiento de programas en vivo y cultura de masas.</p>';
+            } else if (invention === 'cine') {
+                title = '🎬 El Cinematógrafo (1895)';
+                content = '<p><strong>Inventores:</strong> Hermanos Lumière y Edison</p>' +
+                         '<p><strong>🎭 Revolución:</strong> Creó una nueva forma de arte.</p>' +
+                         '<p><strong>👥 Democratización:</strong> Entretenimiento para todas las clases.</p>' +
+                         '<p><strong>🏭 Industria:</strong> Origen de Hollywood y el cine moderno.</p>' +
+                         '<hr style="margin: 20px 0; border: 1px solid rgba(255,255,255,0.3);">' +
+                         '<p><strong>🏃🎬 Dato Fascinante: Hollywood nació huyendo del monopolio cinematográfico</strong></p>' +
+                         '<p>A principios del siglo XX, las productoras de cine se mudaron al sur de California desde el Este para <strong>escapar del control de la Motion Picture Patents Company (MPPC)</strong>, apodada "<strong>El Trust</strong>" (fundada por Thomas Edison, entre otros).</p>' +
+                         '<p><strong>🛡️ El problema:</strong> Esta corporación monopolizaba los equipos y las patentes de cámaras, limitando la producción.</p>' +
+                         '<p><strong>🌴 La solución - California ofrecía:</strong></p>' +
+                         '<ul style="margin: 10px 0 10px 20px; line-height: 1.6;">' +
+                         '<li>☀️ <strong>Clima soleado</strong> ideal para filmar todo el año</li>' +
+                         '<li>🏞️ <strong>Terrenos variados</strong> (costas, montañas, desiertos)</li>' +
+                         '<li>🗺️ <strong>Cercanía con México</strong> - fácil escape para guardar equipos no licenciados</li>' +
+                         '<li>📏 <strong>Distancia del Este</strong> para evadir demandas legales</li>' +
+                         '</ul>' +
+                         '<p><strong>🌟 Resultado:</strong> Esta migración masiva convirtió a Hollywood en la <strong>capital mundial del cine</strong>.</p>';
+            } else if (invention === 'tv') {
+                title = '📺 La Televisión de Baird (1927)';
+                content = '<p><strong>Inventor:</strong> John Logie Baird</p>' +
+                         '<p><strong>🖼️ Innovación:</strong> Unió imagen y sonido en tiempo real.</p>' +
+                         '<p><strong>🏠 Revolución:</strong> El mundo entero en tu sala.</p>' +
+                         '<p><strong>🌍 Globalización:</strong> Primera experiencia global compartida.</p>';
+            }
+            
+            showModal(title, content);
+        }
+
+        // Función para conceptos
+        function showConcept(concept) {
+            console.log('showConcept called for:', concept);
+            
+            var title = '';
+            var content = '';
+            
+            if (concept === 'sector-artes') {
+                title = '🎭 Sector de las Artes';
+                content = '<p><strong>🎪 Características:</strong></p>' +
+                         '<ul style="margin: 15px 0; line-height: 1.8;">' +
+                         '<li>🎭 Teatro, danza, conciertos, ópera</li>' +
+                         '<li>✨ Únicos e irrepetibles</li>' +
+                         '<li>🛡️ Necesitan apoyo público</li>' +
+                         '<li>⚠️ En crisis económica permanente</li>' +
+                         '<li>🏭 No son industria por sí mismos</li>' +
+                         '</ul>' +
+                         '<p><strong>📈 Evolución:</strong> Hacia espectáculo y merchandising.</p>';
+            } else if (concept === 'industrias-culturales') {
+                title = '🏭 Industrias Culturales';
+                content = '<p><strong>💡 Definición:</strong> Convierten creatividad en actividad económica.</p>' +
+                         '<p><strong>📚 Ejemplos:</strong></p>' +
+                         '<ul style="margin: 15px 0; line-height: 1.8;">' +
+                         '<li>📖 Editorial (libros, revistas)</li>' +
+                         '<li>🎵 Música (discos, streaming)</li>' +
+                         '<li>🎬 Cine y audiovisual</li>' +
+                         '<li>📺 Televisión</li>' +
+                         '</ul>' +
+                         '<p><strong>⚖️ Clave:</strong> Industrias de propiedad intelectual.</p>';
+            } else if (concept === 'industrias-mediaticas') {
+                title = '📺 Industrias Mediáticas';
+                content = '<p><strong>💪 Poder:</strong> Controlan comunicación y opinión pública.</p>' +
+                         '<p><strong>🌍 Alcance:</strong> Local, nacional o internacional.</p>' +
+                         '<p><strong>🎯 Función:</strong> Deciden qué temas son "interesantes".</p>' +
+                         '<p><strong>📱 Ejemplos:</strong> TV, prensa, radio, plataformas digitales.</p>';
+            } else if (concept === 'industrias-creativas') {
+                title = '💡 Industrias Creativas';
+                content = '<p><strong>🇬🇧 Origen:</strong> Concepto inglés "Creative Industries".</p>' +
+                         '<p><strong>🧠 Enfoque:</strong> Creatividad humana como motor económico.</p>' +
+                         '<p><strong>💻 Ejemplos:</strong></p>' +
+                         '<ul style="margin: 15px 0; line-height: 1.8;">' +
+                         '<li>💻 Software y apps</li>' +
+                         '<li>🎮 Videojuegos</li>' +
+                         '<li>🎨 Diseño gráfico</li>' +
+                         '<li>📱 Contenido digital</li>' +
+                         '</ul>';
+            } else if (concept === 'ocio-entretenimiento') {
+                title = '🎮 Ocio y Entretenimiento';
+                content = '<p><strong>🇺🇸 Origen:</strong> Concepto estadounidense.</p>' +
+                         '<p><strong>💰 Enfoque:</strong> Actividad económica e impacto financiero.</p>' +
+                         '<p><strong>🎪 Ejemplos:</strong></p>' +
+                         '<ul style="margin: 15px 0; line-height: 1.8;">' +
+                         '<li>🎢 Parques temáticos</li>' +
+                         '<li>⚽ Deportes profesionales</li>' +
+                         '<li>🎰 Casinos y juegos</li>' +
+                         '<li>🏖️ Turismo de ocio</li>' +
+                         '</ul>';
+            }
+            
+            showModal(title, content);
+        }
+
+        // Función para el quiz
+        function checkAnswer(button, isCorrect) {
+            var options = button.parentElement.querySelectorAll('.quiz-option');
+            options.forEach(function(opt) { opt.style.pointerEvents = 'none'; });
+            
+            if (isCorrect) {
+                button.classList.add('correct');
+                correctAnswers++;
+                
+                if (correctAnswers === totalQuestions) {
+                    setTimeout(function() {
+                        createConfetti();
+                        var finalMsg = document.getElementById('finalMessage');
+                        finalMsg.innerHTML = '<h3 style="color: #ffeaa7;">🏆 ¡PERFECTO! Todas correctas!</h3>' +
+                                           '<p style="font-size: 1.2rem; margin: 20px 0;"><strong>¡Eres un experto en industrias mediáticas!</strong></p>' +
+                                           '<div style="font-size: 4rem;">🎊🏆🎊</div>';
+                        finalMsg.style.background = 'linear-gradient(135deg, rgba(76, 175, 80, 0.3), rgba(255, 193, 7, 0.3))';
+                        finalMsg.style.border = '2px solid #4caf50';
+                    }, 500);
+                }
+            } else {
+                button.classList.add('incorrect');
+                options.forEach(function(opt) {
+                    if (opt.onclick.toString().includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+
+        // Función para crear confetti
+        function createConfetti() {
+            var container = document.getElementById('confetti-container');
+            var colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#dda0dd'];
+            
+            for (var i = 0; i < 100; i++) {
+                var confetti = document.createElement('div');
+                confetti.style.position = 'absolute';
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = confetti.style.width;
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '-10px';
+                confetti.style.borderRadius = '50%';
+                confetti.style.animation = 'confettiFall ' + (Math.random() * 3 + 2) + 's linear forwards';
+                
+                container.appendChild(confetti);
+                
+                setTimeout(function(el) {
+                    return function() {
+                        if (el.parentNode) el.parentNode.removeChild(el);
+                    };
+                }(confetti), 5000);
+            }
+        }
+
+        // Inicialización cuando carga la página
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded - initializing');
+            
+            modal = document.getElementById('infoModal');
+            modalHeader = document.getElementById('modalHeader');
+            modalBody = document.getElementById('modalBody');
+            
+            console.log('Modal elements found:', !!modal, !!modalHeader, !!modalBody);
+            
+            window.onclick = function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
